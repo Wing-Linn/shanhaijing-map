@@ -12,7 +12,7 @@ function App() {
   const [hoveredRegion, setHoveredRegion] = useState<string | null>(null);
 
   return (
-    <div className="relative w-screen h-screen overflow-hidden bg-[#0a0a14]">
+    <div className="relative w-screen h-screen overflow-hidden bg-[#e8e0cc]">
       {/* 3D Scene */}
       <Scene3D
         selectedMountain={selectedMountain}
@@ -22,9 +22,9 @@ function App() {
         searchTerm={searchTerm}
       />
 
-      {/* Vignette overlay */}
+      {/* Vignette overlay — soft golden edge like ancient scroll */}
       <div className="absolute inset-0 pointer-events-none z-10" style={{
-        background: 'radial-gradient(ellipse at center, transparent 40%, rgba(10,10,20,0.6) 100%)',
+        background: 'radial-gradient(ellipse at center, transparent 35%, rgba(180,150,80,0.15) 80%, rgba(120,100,50,0.25) 100%)',
       }} />
 
       {/* Sidebar */}
@@ -44,10 +44,10 @@ function App() {
       {/* Info Overlay */}
       <InfoOverlay />
 
-      {/* Title overlay (when no sidebar visible space) */}
+      {/* Title overlay */}
       <div className="absolute top-4 right-4 z-10 pointer-events-none">
         <div className="text-right">
-          <div className="text-amber-500/30 text-xs tracking-[0.3em]">ANCIENT CHINESE MYTHOLOGY</div>
+          <div className="text-[#8a6c2a]/30 text-xs tracking-[0.3em] font-sans">ANCIENT CHINESE MYTHOLOGY</div>
         </div>
       </div>
     </div>

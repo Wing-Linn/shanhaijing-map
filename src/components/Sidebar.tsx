@@ -39,7 +39,7 @@ export default function Sidebar({
     return (
       <button
         onClick={() => setIsCollapsed(false)}
-        className="absolute left-0 top-1/2 -translate-y-1/2 z-20 bg-[#1a1a2e]/90 border border-amber-700/30 border-l-0 rounded-r-lg p-3 text-amber-400 hover:text-amber-300 transition-all"
+        className="absolute left-0 top-1/2 -translate-y-1/2 z-20 bg-[#f5eedc]/90 border border-[#8a6c2a]/25 border-l-0 rounded-r-lg p-3 text-[#2d6b4a] hover:text-[#1a4a30] transition-all shadow-lg"
       >
         <ChevronRight size={20} className="rotate-180" />
       </button>
@@ -48,17 +48,17 @@ export default function Sidebar({
 
   return (
     <div className="absolute left-0 top-0 h-full w-80 z-20 pointer-events-auto">
-      <div className="h-full flex flex-col bg-gradient-to-b from-[#1a1a2e]/95 to-[#0d0d1a]/95 backdrop-blur-md border-r border-amber-700/30 shadow-2xl">
+      <div className="h-full flex flex-col bg-gradient-to-b from-[#f5eedc]/96 to-[#ede4cc]/96 backdrop-blur-md border-r border-[#8a6c2a]/25 shadow-2xl">
         {/* Title */}
-        <div className="p-6 border-b border-amber-700/20">
+        <div className="p-6 border-b border-[#8a6c2a]/15">
           <div className="flex items-center justify-between">
             <div>
-              <h1 className="text-2xl font-serif text-amber-200 tracking-wider">山海经</h1>
-              <p className="text-xs text-amber-500/50 mt-1 tracking-widest">SHAN HAI JING · 3D MAP</p>
+              <h1 className="text-3xl font-serif text-[#1a3a28] tracking-[0.15em]">山海经</h1>
+              <p className="text-xs text-[#8a6c2a]/50 mt-1 tracking-[0.2em] font-sans">SHAN HAI JING · 3D MAP</p>
             </div>
             <button
               onClick={() => setIsCollapsed(true)}
-              className="text-amber-300/50 hover:text-amber-300 transition-colors p-1"
+              className="text-[#8a6c2a]/50 hover:text-[#8a6c2a] transition-colors p-1"
             >
               <ChevronRight size={20} />
             </button>
@@ -66,33 +66,33 @@ export default function Sidebar({
         </div>
 
         {/* Search */}
-        <div className="p-4 border-b border-amber-700/10">
+        <div className="p-4 border-b border-[#8a6c2a]/10">
           <div className="relative">
-            <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-amber-500/40" />
+            <Search size={15} className="absolute left-3 top-1/2 -translate-y-1/2 text-[#8a6c2a]/40" />
             <input
               type="text"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               placeholder="搜索山名、异兽..."
-              className="w-full pl-9 pr-3 py-2 bg-[#0d0d1a] border border-amber-700/20 rounded-lg text-sm text-amber-100 placeholder-amber-500/30 focus:outline-none focus:border-amber-600/50 transition-colors"
+              className="w-full pl-9 pr-3 py-2 bg-[#ede4cc]/60 border border-[#8a6c2a]/20 rounded-lg text-sm text-[#2a3820] placeholder-[#8a6c2a]/35 focus:outline-none focus:border-[#2d6b4a]/40 transition-colors font-serif"
             />
           </div>
         </div>
 
         {/* Region filters */}
-        <div className="p-4 border-b border-amber-700/10">
-          <div className="flex items-center gap-2 text-amber-500/60 text-xs mb-3">
-            <Compass size={14} />
-            <span>五方山经</span>
+        <div className="p-4 border-b border-[#8a6c2a]/10">
+          <div className="flex items-center gap-2 text-[#2d6b4a]/70 text-xs mb-3">
+            <Compass size={13} />
+            <span className="tracking-widest">五方山经</span>
           </div>
           <div className="grid grid-cols-3 gap-2">
             <button
               onClick={() => setFilterRegion(null)}
               onMouseEnter={() => setHoveredRegion(null)}
-              className={`px-2 py-1.5 text-xs rounded-md transition-all ${
+              className={`px-2 py-1.5 text-xs rounded-md transition-all font-serif ${
                 !filterRegion
-                  ? 'bg-amber-700/40 text-amber-200 border border-amber-600/50'
-                  : 'bg-[#0d0d1a] text-amber-500/50 border border-amber-700/10 hover:border-amber-700/30'
+                  ? 'bg-[#2d6b4a]/15 text-[#1a3a28] border border-[#2d6b4a]/40'
+                  : 'bg-[#ede4cc]/40 text-[#8a6c2a]/60 border border-[#8a6c2a]/15 hover:border-[#8a6c2a]/30'
               }`}
             >
               全部
@@ -103,14 +103,13 @@ export default function Sidebar({
                 onClick={() => setFilterRegion(filterRegion === r.code ? null : r.code)}
                 onMouseEnter={() => setHoveredRegion(r.code)}
                 onMouseLeave={() => setHoveredRegion(null)}
-                className={`px-2 py-1.5 text-xs rounded-md transition-all border ${
-                  filterRegion === r.code
-                    ? 'text-white'
-                    : 'bg-[#0d0d1a] text-amber-500/50 border-amber-700/10 hover:border-amber-700/30'
+                className={`px-2 py-1.5 text-xs rounded-md transition-all border font-serif ${
+                  filterRegion === r.code ? 'text-white' : 'bg-[#ede4cc]/40 text-[#8a6c2a]/60 border-[#8a6c2a]/15 hover:border-[#8a6c2a]/30'
                 }`}
                 style={filterRegion === r.code ? {
-                  background: `${r.color}40`,
+                  background: `${r.color}30`,
                   borderColor: `${r.color}80`,
+                  color: r.color,
                 } : {}}
               >
                 {r.name}
@@ -122,7 +121,7 @@ export default function Sidebar({
         {/* Mountain list */}
         <div className="flex-1 overflow-y-auto p-2">
           {filteredMountains.length === 0 ? (
-            <div className="text-center text-amber-500/30 text-sm py-8">无搜索结果</div>
+            <div className="text-center text-[#8a6c2a]/30 text-sm py-8 font-serif">无搜索结果</div>
           ) : (
             <div className="space-y-1">
               {filteredMountains.map(m => {
@@ -134,8 +133,8 @@ export default function Sidebar({
                     onClick={() => onSelectMountain(m)}
                     className={`w-full text-left px-3 py-2.5 rounded-lg transition-all group ${
                       isSelected
-                        ? 'bg-amber-900/30 border border-amber-700/40'
-                        : 'hover:bg-amber-900/10 border border-transparent'
+                        ? 'bg-[#2d6b4a]/12 border border-[#2d6b4a]/30'
+                        : 'hover:bg-[#2d6b4a]/8 border border-transparent'
                     }`}
                   >
                     <div className="flex items-center justify-between">
@@ -144,18 +143,18 @@ export default function Sidebar({
                           className="w-2 h-2 rounded-full flex-shrink-0"
                           style={{ background: region?.color }}
                         />
-                        <span className={`text-sm font-serif ${isSelected ? 'text-amber-200' : 'text-amber-100/70'}`}>
+                        <span className={`text-sm font-serif tracking-wide ${isSelected ? 'text-[#1a3a28]' : 'text-[#2a3820]/75'}`}>
                           {m.name}
                         </span>
                       </div>
                       {m.creatures.length > 0 && (
-                        <span className="text-xs text-amber-500/40">
+                        <span className="text-xs text-[#8a6c2a]/45 font-sans">
                           {m.creatures.length} 异物
                         </span>
                       )}
                     </div>
                     {m.creatures.length > 0 && (
-                      <div className="mt-1 ml-4 text-xs text-amber-500/30 truncate">
+                      <div className="mt-1 ml-4 text-xs text-[#8a6c2a]/35 truncate font-serif">
                         {m.creatures.map(c => c.name).join(' · ')}
                       </div>
                     )}
@@ -167,7 +166,7 @@ export default function Sidebar({
         </div>
 
         {/* Footer stats */}
-        <div className="p-4 border-t border-amber-700/20 text-xs text-amber-500/40">
+        <div className="p-4 border-t border-[#8a6c2a]/15 text-xs text-[#8a6c2a]/45 font-serif">
           <div className="flex justify-between">
             <span>共载 {mountains.length} 山</span>
             <span>{mountains.reduce((sum, m) => sum + m.creatures.length, 0)} 异物</span>
